@@ -1,0 +1,73 @@
+-------------------
+1. intsall node.js
+```
+https://nodejs.org/en/
+
+```
+2. buka di visual studio code filenya
+3. ubah nama tabel user  di file dashboardRoutes.js & authController.js & dashboardcontroller.js & user.js & dashboardRoutes.js
+4. ubah atau tambah nama tabel user di file models->user.js
+5. buka xampp jalankan mysql,apache
+    ->buka php my admin
+    ->buat database baru
+    ->buat table baru sesuaikan dengan punya kalian tabel user dulu
+6. jika ingin login menggunaan username dan passwod ubah di index.js dan routes->auth.js
+7. buka file .env dan db.js
+    ->ubah port sesuai yang kalian mau
+    ->ubah nama database sesuai yang kalian buat
+    ->ubah atau biarkan saja "JWT_SECRET" ini adalah token
+8. buka terminal di visual studio code
+    ->ketik "npm install" untuk install semua package
+    ->ketik "npm run dev" untuk jalankan server atau "node index.js"
+9. buka postman 
+    -> http://localhost:8080/api/auth/register method POST "jika pakai port 8080, untuk register
+        ->tambah "key=Content-Type, value=application/json" pada HEADER
+        ->tambah "raw" pada BODY isinya contoh :
+        ```
+        {
+            "username": "admin",
+            "nama": "ahmad dani",
+            "sebagai": "admin1",
+            "email": "admin2@gmail.com",
+            "password": "kosong",
+            "departemen": "sd negeri 46"
+        }
+
+        ```
+    coba send
+    -> http://localhost:8080/api/auth/login method POST "jika pakai port 8080 untuk login
+        ->tambah "key=Content-Type, value=application/json" pada HEADER
+        ->tambah "raw" pada BODY isinya contoh :
+        ```
+        {
+            "email": "admin2@gmail.com",
+            "password": "kosong"
+        }
+
+        ```
+    coba send
+    -> http://localhost:8080/api/dashboard method GET "jika pakai port 8080 untuk hlaman dashboard
+        -> masuk ke authorization kemudian pilih berer token dan masukan token yang di dapatkan saat login
+    coba send
+    -> http://localhost:8080/api/auth/logout method POST "jika pakai port 8080 untuk longout
+        -> masuk ke authorization kemudian pilih berer token dan masukan token yang di dapatkan saat login
+        coba send
+        ``` untuk logout di apk klayen
+        // Contoh logout di sisi klien (misalnya menggunakan fetch API)
+        fetch('http://localhost:8080/api/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.msg); // Logged out successfully
+            localStorage.removeItem('token'); // Hapus token dari local storage
+            })
+        .catch(error => console.error('Error:', error));
+
+        ```
+    end
+    -> http://
+
